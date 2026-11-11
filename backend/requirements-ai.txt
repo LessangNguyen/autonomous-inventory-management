@@ -1,0 +1,7 @@
+# Optional AI extras.
+# The application runs without these: forecasting falls back to scikit-learn,
+# the agent falls back to a deterministic tool router, and no LLM calls are made.
+
+lightgbm>=4.4          # preferred gradient boosting backend
+langgraph>=0.2         # graph-based agent orchestration (LangGraph)
+langchain-core>=0.3    # message/tool primitives used by the LangGraph path

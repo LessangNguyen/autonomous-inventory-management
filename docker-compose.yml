@@ -1,0 +1,64 @@
+# Autonomous Inventory Management System - single-command local stack.
+#
+#   docker compose up --build
+#   UI .......... http://localhost:3000
+#   API docs .... http://localhost:8000/docs
+#
+# First run: open the UI and choose "Tạo cửa hàng" to create your owner account,
+# then import your own products, inventory and sales history. The stack starts
+# with an empty database; synthetic demo data is opt-in via SEED_DEMO_DATA.
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: inventory
+      POSTGRES_USER: inventory
+      POSTGRES_PASSWORD: inventory
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U inventory -d inventory"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      ENVIRONMENT: production
+      SECRET_KEY: ${SECRET_KEY:-change-me-before-deploying-this-stack}
+      DATABASE_URL: postgresql+psycopg2://inventory:inventory@db:5432/inventory
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      SEED_DEMO_DATA: ${SEED_DEMO_DATA:-false}
+      ALLOW_REGISTRATION: ${ALLOW_REGISTRATION:-true}
+      SERVICE_LEVEL: ${SERVICE_LEVEL:-0.95}
+      REVIEW_PERIOD_DAYS: ${REVIEW_PERIOD_DAYS:-7}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.openai.com/v1}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - backend_uploads:/app/uploads
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  backend_uploads:

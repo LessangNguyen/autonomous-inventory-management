@@ -1,0 +1,25 @@
+﻿sku,name,category,unit,unit_cost,price,supplier_name,lead_time_days,moq,order_multiple
+SER-001,Serum Vitamin C 30ml,Chăm sóc da,chai,145000,289000,Công ty Mỹ phẩm Ánh Dương,5,12,6
+SUN-002,Kem chống nắng SPF50+,Chăm sóc da,tuýp,98000,199000,Công ty Mỹ phẩm Ánh Dương,5,12,6
+CLE-003,Sữa rửa mặt dịu nhẹ,Chăm sóc da,tuýp,62000,135000,Công ty Mỹ phẩm Ánh Dương,5,24,12
+TON-004,Toner hoa hồng 250ml,Chăm sóc da,chai,85000,175000,Công ty Mỹ phẩm Ánh Dương,5,12,6
+MAS-005,Mặt nạ giấy (hộp 10),Chăm sóc da,hộp,45000,99000,Công ty Mỹ phẩm Ánh Dương,5,20,10
+LIP-006,Son môi kem lì,Trang điểm,thỏi,55000,149000,Công ty Mỹ phẩm Ánh Dương,5,12,12
+FOU-007,Phấn nền lâu trôi 24h,Trang điểm,hộp,120000,265000,Công ty Mỹ phẩm Ánh Dương,5,6,6
+MAS-008,Mascara không lem,Trang điểm,cây,70000,165000,Công ty Mỹ phẩm Ánh Dương,5,12,6
+SHA-009,Dầu gội thảo dược 500ml,Chăm sóc tóc,chai,78000,159000,Công ty Mỹ phẩm Ánh Dương,5,12,6
+CON-010,Dầu xả phục hồi 500ml,Chăm sóc tóc,chai,82000,169000,Công ty Mỹ phẩm Ánh Dương,5,12,6
+KER-011,Ủ tóc keratin 250g,Chăm sóc tóc,hũ,95000,210000,Công ty Mỹ phẩm Ánh Dương,5,6,6
+BOD-012,Sữa tắm trắng da 1L,Chăm sóc cơ thể,chai,88000,179000,Công ty Mỹ phẩm Ánh Dương,5,12,6
+HAN-013,Nước rửa tay 500ml,Chăm sóc cơ thể,chai,35000,79000,Công ty Mỹ phẩm Ánh Dương,5,24,12
+MSK-014,Khẩu trang y tế (hộp 50),Chăm sóc cơ thể,hộp,25000,55000,Tổng kho Gia dụng Việt,7,24,12
+WAT-015,Nước suối 500ml (lốc 6),Đồ uống,lốc,28000,45000,Nhà phân phối Thực phẩm Xanh,3,24,12
+COF-016,Cà phê lon 330ml,Đồ uống,lon,12000,22000,Nhà phân phối Thực phẩm Xanh,3,48,24
+TEA-017,Trà xanh chai 500ml,Đồ uống,chai,9000,18000,Nhà phân phối Thực phẩm Xanh,3,48,24
+BIS-018,Bánh quy bơ 300g,Thực phẩm,hộp,32000,65000,Nhà phân phối Thực phẩm Xanh,3,12,6
+CAS-019,Hạt điều rang muối 250g,Thực phẩm,gói,55000,115000,Nhà phân phối Thực phẩm Xanh,3,12,6
+CAN-020,Nến thơm phòng,Gia dụng,hũ,48000,119000,Tổng kho Gia dụng Việt,7,6,6
+BAG-021,Túi giữ nhiệt,Gia dụng,cái,65000,149000,Tổng kho Gia dụng Việt,7,6,6
+BOT-022,Bình nước thể thao 750ml,Gia dụng,cái,52000,129000,Tổng kho Gia dụng Việt,7,6,6
+CAB-023,Dây sạc USB-C 1m,Phụ kiện,cái,38000,95000,Tổng kho Gia dụng Việt,7,12,12
+EAR-024,Tai nghe có dây,Phụ kiện,cái,42000,119000,Tổng kho Gia dụng Việt,7,6,6

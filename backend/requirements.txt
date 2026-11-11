@@ -1,0 +1,18 @@
+# Core runtime dependencies for the API, data pipeline and ML models.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+SQLAlchemy>=2.0.30
+pydantic>=2.8
+pydantic-settings>=2.4
+email-validator>=2.2
+PyJWT>=2.9
+python-multipart>=0.0.9
+pandas>=2.2
+numpy>=2.0
+openpyxl>=3.1
+scikit-learn>=1.5
+joblib>=1.4
+httpx>=0.27
+
+# PostgreSQL driver (used when DATABASE_URL points to Postgres)
+psycopg2-binary>=2.9.10
