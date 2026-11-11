@@ -78,7 +78,20 @@ def _daily_demand(
 
 def seed_demo(db: Session) -> int | None:
     """Create the demo tenant once. Returns the tenant id when seeded."""
-    if db.query(Tenant).count() > 0:
+    existing_tenant = db.query(Tenant).filter(Tenant.name == "Cửa hàng Demo").first()
+    if existing_tenant:
+        demo_user = db.query(User).filter(User.email == "demo@inventory.ai").first()
+        if not demo_user:
+            db.add(
+                User(
+                    tenant_id=existing_tenant.id,
+                    email="demo@inventory.ai",
+                    full_name="Khách hàng Demo",
+                    hashed_password=hash_password("demo1234"),
+                    role="owner",
+                )
+            )
+            db.commit()
         return None
 
     tenant = Tenant(name="Cửa hàng Demo", plan="professional")
@@ -89,7 +102,7 @@ def seed_demo(db: Session) -> int | None:
         User(
             tenant_id=tenant.id,
             email="demo@inventory.ai",
-            full_name="Nguyễn Minh Anh",
+            full_name="Khách hàng Demo",
             hashed_password=hash_password("demo1234"),
             role="owner",
         )

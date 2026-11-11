@@ -801,6 +801,72 @@ label {
   gap: 12px;
   font-size: 12px;
 }
+.demo-callout {
+  margin: 16px 0 18px 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #f5f7ff;
+  border: 1px solid #d5dcfa;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.demo-callout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.demo-badge {
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+.demo-badge-hint {
+  font-size: 11px;
+  color: var(--muted);
+}
+.demo-creds-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e6f5;
+  font-size: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.demo-label {
+  color: var(--muted);
+  margin-right: 4px;
+}
+.demo-creds-info code {
+  color: var(--ink);
+  font-weight: 600;
+  background: #f0f2f9;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+.demo-quick-btn {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 14px;
+  background: #ffffff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+.demo-quick-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: #ffffff;
+}
 .auth-note {
   max-width: 400px;
   font-size: 11.5px;

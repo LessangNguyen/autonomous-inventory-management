@@ -26,11 +26,13 @@ def auth_status(db: Session = Depends(get_db)) -> dict:
     ``initialized`` is false on a brand-new database, so the UI can start on
     the "create store" tab instead of showing a login form nobody can use.
     """
-
+    demo_user = db.query(User).filter(User.email == "demo@inventory.ai").first()
     return {
         "initialized": db.query(User.id).first() is not None,
         "registration_open": settings.allow_registration,
-        "demo_enabled": settings.seed_demo_data,
+        "demo_enabled": settings.seed_demo_data or (demo_user is not None),
+        "demo_email": "demo@inventory.ai",
+        "demo_password": "demo1234",
     }
 
 

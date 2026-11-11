@@ -44,6 +44,22 @@ tồn hiện tại = tồn đầu kỳ + hàng đã nhận từ đơn nhập −
 
 ---
 
+## 🌟 Tài khoản Demo trải nghiệm nhanh (Dành cho khách hàng test giao diện)
+
+Hệ thống được cấu hình sẵn **tài khoản Demo** kèm dữ liệu mẫu sinh động (mô phỏng cửa hàng bán lẻ/mỹ phẩm với 24 SKU, 200 ngày lịch sử bán hàng, các mức tồn kho thực tế, cảnh báo rủi ro và trợ lý AI):
+
+| Thông tin | Giá trị |
+| --- | --- |
+| **URL giao diện** | http://localhost:3000 *(Docker)* hoặc http://localhost:5173 *(Local)* |
+| **Email đăng nhập** | `demo@inventory.ai` |
+| **Mật khẩu** | `demo1234` |
+| **Vai trò** | Chủ cửa hàng (`owner`) |
+| **Cửa hàng demo** | Cửa hàng Demo (kèm đầy đủ báo cáo, dự báo, đơn hàng mẫu) |
+
+> 💡 **Đăng nhập 1-click:** Tại màn hình Đăng nhập, khách hàng chỉ cần bấm nút **`⚡ Đăng nhập nhanh tài khoản Demo`** để vào thẳng Dashboard trải nghiệm toàn bộ giao diện và chức năng mà không cần nhập tay!
+
+---
+
 ## 2. Khởi chạy nhanh
 
 ### 2.1. Docker Compose (khuyến nghị)
@@ -59,10 +75,8 @@ docker compose up --build
 | API + Swagger | http://localhost:8000/docs |
 | Health check | http://localhost:8000/api/health |
 
-Lần đầu mở giao diện, chọn **Tạo cửa hàng** để tạo tài khoản chủ sở hữu.
-Database mặc định **trống** — không có tài khoản hay số liệu mẫu.
-(Chỉ khi muốn xem bản demo synthetic: đặt `SEED_DEMO_DATA=true` trước lần khởi động đầu tiên,
-rồi đăng nhập `demo@inventory.ai` / `demo1234`.)
+- **Khách hàng test giao diện:** Đăng nhập ngay bằng **`demo@inventory.ai`** / **`demo1234`** (hoặc click nút đăng nhập nhanh trên màn hình).
+- **Triển khai dữ liệu thật:** Bạn có thể chọn tab **Tạo cửa hàng** để tạo tài khoản mới và import dữ liệu thực tế của doanh nghiệp.
 
 ### 2.2. Chạy local (không cần Docker)
 
@@ -242,7 +256,7 @@ dự báo → đề xuất → đơn nháp → phê duyệt → nhận hàng).
 | `SERVICE_LEVEL` | `0.95` | Mức phục vụ dùng tính safety stock |
 | `REVIEW_PERIOD_DAYS` | `7` | Chu kỳ kiểm tra đặt hàng |
 | `FORECAST_HISTORY_DAYS` | `180` | Số ngày lịch sử dùng để train |
-| `SEED_DEMO_DATA` | `false` | Tắt mặc định; `true` = tự sinh tenant demo synthetic lần đầu |
+| `SEED_DEMO_DATA` | `true` | Bật mặc định tạo sẵn tài khoản và dữ liệu demo; đặt `false` nếu muốn db sạch hoàn toàn |
 | `ALLOW_REGISTRATION` | `true` | Cho phép tự tạo cửa hàng từ màn hình đăng nhập |
 | `LLM_API_KEY` | *(rỗng)* | Bật agent LLM; rỗng = RuleRouter |
 | `LLM_BASE_URL`, `LLM_MODEL` | OpenAI + `gpt-4o-mini` | Endpoint/model tương thích OpenAI |

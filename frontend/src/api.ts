@@ -278,7 +278,13 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 
 export const api = {
   authStatus: () =>
-    request<{ initialized: boolean; registration_open: boolean; demo_enabled: boolean }>("/auth/status"),
+    request<{
+      initialized: boolean;
+      registration_open: boolean;
+      demo_enabled: boolean;
+      demo_email?: string;
+      demo_password?: string;
+    }>("/auth/status"),
   login: (email: string, password: string) =>
     request<{ access_token: string; user: User; tenant_name: string }>("/auth/login", {
       method: "POST",

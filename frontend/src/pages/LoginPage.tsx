@@ -15,6 +15,10 @@ export default function LoginPage() {
   const [fullName, setFullName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [demoCreds, setDemoCreds] = useState<{ email: string; password: string } | null>({
+    email: "demo@inventory.ai",
+    password: "demo1234",
+  });
 
   useEffect(() => {
     let alive = true;
@@ -23,8 +27,13 @@ export default function LoginPage() {
       .then((status) => {
         if (!alive) return;
         setRegistrationOpen(status.registration_open);
+        if (status.demo_email && status.demo_password) {
+          setDemoCreds({ email: status.demo_email, password: status.demo_password });
+        }
         // A brand-new installation has no account: start on the setup tab.
-        if (!status.initialized && status.registration_open) setMode("register");
+        if (!status.initialized && status.registration_open && !status.demo_enabled) {
+          setMode("register");
+        }
       })
       .catch(() => {
         // Status is a convenience only; login still works if it fails.
@@ -36,6 +45,23 @@ export default function LoginPage() {
       alive = false;
     };
   }, []);
+
+  async function quickDemoLogin() {
+    const targetEmail = demoCreds?.email || "demo@inventory.ai";
+    const targetPassword = demoCreds?.password || "demo1234";
+    setMode("login");
+    setEmail(targetEmail);
+    setPassword(targetPassword);
+    setError("");
+    setLoading(true);
+    try {
+      await signIn(targetEmail, targetPassword);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không thể đăng nhập bằng tài khoản demo.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function submit(event: FormEvent) {
     event.preventDefault();
@@ -97,6 +123,31 @@ export default function LoginPage() {
               </button>
             )}
           </div>
+
+          {demoCreds && (
+            <div className="demo-callout">
+              <div className="demo-callout-header">
+                <span className="demo-badge">Tài khoản dùng thử / Demo</span>
+                <span className="demo-badge-hint">Dành cho khách test giao diện</span>
+              </div>
+              <div className="demo-creds-info">
+                <div>
+                  <span className="demo-label">Email:</span> <code>{demoCreds.email}</code>
+                </div>
+                <div>
+                  <span className="demo-label">Mật khẩu:</span> <code>{demoCreds.password}</code>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="btn btn-secondary btn-block demo-quick-btn"
+                onClick={quickDemoLogin}
+                disabled={loading}
+              >
+                ⚡ Đăng nhập nhanh tài khoản Demo
+              </button>
+            </div>
+          )}
 
           {mode === "register" && (
             <div className="alert alert-info">

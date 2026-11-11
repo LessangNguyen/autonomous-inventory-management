@@ -37,9 +37,10 @@ class Settings(BaseSettings):
     llm_base_url: str = "https://api.openai.com/v1"
     llm_model: str = "gpt-4o-mini"
 
-    # Demo seeding is OFF by default. Set SEED_DEMO_DATA=true only when you
-    # explicitly want the synthetic "Cửa hàng Demo" data for a walkthrough.
-    seed_demo_data: bool = False
+    # Demo seeding is ON by default so customers/evaluators can log in immediately
+    # and explore the dashboard using demo@inventory.ai / demo1234.
+    # Set SEED_DEMO_DATA=false if starting in a completely clean production environment.
+    seed_demo_data: bool = True
 
     @property
     def cors_origin_list(self) -> list[str]:
