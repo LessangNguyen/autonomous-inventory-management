@@ -1,4 +1,4 @@
-﻿"""Demo seed: a realistic cosmetics / mini-mart store so the product is usable
+"""Demo seed: a realistic cosmetics / mini-mart store so the product is usable
 immediately after ``docker compose up``.
 
 The data is SYNTHETIC. It is labelled as such everywhere it surfaces and must
